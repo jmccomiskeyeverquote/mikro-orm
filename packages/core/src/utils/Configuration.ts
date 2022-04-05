@@ -58,6 +58,7 @@ export class Configuration<D extends IDatabaseDriver = IDatabaseDriver> {
     context: (name: string) => RequestContext.getEntityManager(name),
     contextName: 'default',
     allowGlobalContext: false,
+    arrayTypeDelimiter: ',',
     // eslint-disable-next-line no-console
     logger: console.log.bind(console),
     findOneOrFailHandler: (entityName: string, where: Dictionary | IPrimaryKey) => NotFoundError.findOneFailed(entityName, where),
@@ -436,6 +437,7 @@ export interface MikroORMOptions<D extends IDatabaseDriver = IDatabaseDriver> ex
   namingStrategy?: { new(): NamingStrategy };
   implicitTransactions?: boolean;
   connect: boolean;
+  arrayTypeDelimiter?: string;
   autoJoinOneToOneOwner: boolean;
   propagateToOneOwner: boolean;
   populateAfterFlush: boolean;

@@ -258,7 +258,7 @@ export abstract class Platform {
   }
 
   marshallArray(values: string[]): string {
-    return values.join(',');
+    return values.join(this.config.get('arrayTypeDelimiter')|| ',');
   }
 
   unmarshallArray(value: string): string[] {
@@ -266,7 +266,7 @@ export abstract class Platform {
       return [];
     }
 
-    return value.split(',') as string[];
+    return value.split(this.config.get('arrayTypeDelimiter') || ',') as string[];
   }
 
   getBlobDeclarationSQL(): string {
